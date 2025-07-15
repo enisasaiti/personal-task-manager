@@ -53,3 +53,4 @@ npm start / ng serve
 - ✏️ Edit existing tasks
 - 🔍 Filter and search tasks
 🎨 Improve styling (Angular Material or CSS)
+
