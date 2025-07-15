@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../models/task';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { taskRefreshSignal } from '../../signals/task-refresh.signal';
 
 @Component({
   selector: 'app-task-form',
-  standalone: true, 
-  imports: [CommonModule, FormsModule], 
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-form.component.html'
 })
 export class TaskFormComponent {
@@ -17,7 +18,6 @@ export class TaskFormComponent {
   constructor(private taskService: TaskService) {}
 
   addTask(): void {
-    console.log("added")
     if (!this.title.trim()) return;
 
     const newTask: Task = {
@@ -28,6 +28,8 @@ export class TaskFormComponent {
     };
 
     this.taskService.addTask(newTask);
+    taskRefreshSignal.update(v => v + 1); // Trigger refresh in TaskList
+
     this.title = '';
     this.dueDate = '';
   }

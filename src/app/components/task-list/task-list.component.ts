@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Task } from '../../models/task';
 import { TaskService } from '../../services/task.service';
 import { FormsModule } from '@angular/forms';
+import { taskRefreshSignal } from '../../signals/task-refresh.signal';
 
 @Component({
   selector: 'app-task-list',
@@ -15,11 +16,18 @@ export class TaskListComponent implements OnInit {
   editingTaskId: number | null = null;
   editedTitle: string = '';
   editedDueDate?: string;
+  searchTerm: string = '';
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) {
+    // ✅ Effect moved into constructor (valid injection context)
+    effect(() => {
+      taskRefreshSignal(); // triggers re-evaluation
+      this.loadTasks();
+    });
+  }
 
   ngOnInit(): void {
-    this.loadTasks();
+    this.loadTasks(); // initial load (optional since effect handles it too)
   }
 
   loadTasks(): void {
@@ -27,7 +35,15 @@ export class TaskListComponent implements OnInit {
   }
 
   getTasksByStatus(status: string): Task[] {
-    return this.tasks.filter(task => task.status === status);
+    return this.tasks
+      .filter(task =>
+        task.status === status &&
+        task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+  }
+
+  getRemainingTasksCount(): number {
+    return this.tasks.filter(t => t.status !== 'Done').length;
   }
 
   deleteTask(id: number): void {
