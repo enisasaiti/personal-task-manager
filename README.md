@@ -54,3 +54,5 @@ npm start / ng serve
 - 🔍 Filter and search tasks
 🎨 Improve styling (Angular Material or CSS)
 
+## 📎 Useful Links
+- 📘 Project Documentation – Confluence: https://saitienisa.atlassian.net/wiki/spaces/~7120208f7e3e8c90b74394bd1e5ab7c2b62747/pages/589826/Personal+Task+Manager+Documentation
