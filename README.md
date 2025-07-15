@@ -1,59 +1,47 @@
-# PersonalTaskManager
+# 📋 Personal Task Manager
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+This is a simple task management application built with **Angular (v20)** using the **standalone component approach**. It supports basic to-do functionality such as creating, listing, and deleting tasks — with plans to add editing, filtering, and completion tracking in future sprints.
 
-## Development server
+> 🚀 Built as part of a hands-on Agile sprint simulation using Jira and Confluence for planning and documentation.
 
-To start a local development server, run:
+---
 
+## 🔧 Features
+
+- ✅ Add new tasks with title and due date
+- 📋 View all tasks grouped by status (To Do, In Progress, Done)
+- 🗑 Delete tasks
+- 💾 Tasks stored in browser **LocalStorage**
+- 📁 Clean, modular architecture using standalone Angular components
+
+---
+
+## 📂 Tech Stack
+
+- **Frontend**: Angular 20
+- **Language**: TypeScript
+- **Tooling**: Angular CLI, LocalStorage API
+- **Project Management**: Jira + Confluence (Agile/Scrum approach)
+
+---
+
+## 🧑‍💻 Getting Started
+
+### Clone the repo:
 ```bash
-ng serve
-```
+git clone https://github.com/enisasaiti/personal-task-manager.git
+cd personal-task-manager
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+📈 Sprint History
 
-## Code scaffolding
+🟢 Sprint 1
+✅ Defined project scope and created Jira backlog
+✅ Built functional Angular task app (add, list, delete)
+✅ Connected repo to GitHub and documented in Confluence
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+🟡 Sprint 2 (Planned)
+✅ Mark task as “Done”
+✏️ Edit existing tasks
+🔍 Filter and search tasks
+🎨 Improve styling (Angular Material or CSS)
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
