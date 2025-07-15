@@ -64,7 +64,7 @@ npm start / ng serve
 - ✅ Displayed remaining task count
 - ✅ Used Angular signals for real-time UI refresh on new task add
 
-  ## 🛣️ Roadmap
+## 🛣️ Roadmap
 
 | Sprint     | Goals                                         | Status         |
 |------------|-----------------------------------------------|----------------|
