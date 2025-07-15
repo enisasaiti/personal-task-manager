@@ -32,6 +32,15 @@ This is a simple task management application built with **Angular (v20)** using 
 git clone https://github.com/enisasaiti/personal-task-manager.git
 cd personal-task-manager
 ```
+### 📥 Install dependencies:
+```
+npm install
+```
+### 🚀 Run the app locally:
+```
+npm start / ng serve
+```
+
 ## 📈 Sprint History
 
 ## 🟢 Sprint 1
