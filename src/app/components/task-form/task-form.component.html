@@ -1,0 +1,5 @@
+<form (ngSubmit)="addTask()" class="task-form" novalidate>
+  <input [(ngModel)]="title" name="title" placeholder="Task title" required />
+  <input [(ngModel)]="dueDate" name="dueDate" type="date" />
+  <button type="submit">Add Task</button>
+</form>
