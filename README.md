@@ -31,9 +31,8 @@ This is a simple task management application built with **Angular (v20)** using 
 ```bash
 git clone https://github.com/enisasaiti/personal-task-manager.git
 cd personal-task-manager
-
-📈 Sprint History
-
+```
+📈 Sprint Histor
 🟢 Sprint 1
 ✅ Defined project scope and created Jira backlog
 ✅ Built functional Angular task app (add, list, delete)
@@ -44,4 +43,3 @@ cd personal-task-manager
 ✏️ Edit existing tasks
 🔍 Filter and search tasks
 🎨 Improve styling (Angular Material or CSS)
-
