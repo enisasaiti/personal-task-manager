@@ -14,7 +14,13 @@ export class TaskService {
   getTasks(): Task[] {
     if (!this.isBrowser()) return [];
     const stored = localStorage.getItem(this.storageKey);
-    return stored ? JSON.parse(stored) : [];
+    const tasks = stored ? JSON.parse(stored) : [];
+
+    // ✅ MIGRATION: convert any dueDate string to actual Date object
+    return tasks.map((task: Task) => ({
+      ...task,
+      dueDate: task.dueDate ? new Date(task.dueDate) : undefined
+    }));
   }
 
   addTask(task: Task): void {

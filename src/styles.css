@@ -1,4 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --priority-high: red;
+  --priority-medium: orange;
+  --priority-low: green;
+  --card-bg: #fdfdfd;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.dark-theme {
+  --bg-color: #1e1e1e;
+  --text-color: #eeeeee;
+  --priority-high: #ff7a7a;
+  --priority-medium: #ffc04d;
+  --priority-low: #6fcf97;
+  --card-bg: #2e2e2e;
+}
+.task-section {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

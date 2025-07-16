@@ -1,48 +1,103 @@
 <div class="task-list">
-  <!-- Search + Priority Filter -->
-  <input [(ngModel)]="searchTerm" placeholder="Search tasks..." />
-  <select [(ngModel)]="priorityFilter" name="priorityFilter">
-    <option value="All">All Priorities</option>
-    <option value="Low">Low</option>
-    <option value="Medium">Medium</option>
-    <option value="High">High</option>
-  </select>
+  <!-- Header: Search + Priority Filter -->
+  <div class="task-list-header">
+    <mat-form-field appearance="fill">
+      <mat-label>Search tasks</mat-label>
+      <input matInput [(ngModel)]="searchTerm" placeholder="Search tasks..." />
+    </mat-form-field>
 
-  <!-- Remaining Count -->
-  <p>🧮 Remaining Tasks: {{ getRemainingTasksCount() }}</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Filter by Priority</mat-label>
+      <mat-select [(ngModel)]="priorityFilter">
+        <mat-option value="All">All</mat-option>
+        <mat-option value="High">High</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="Low">Low</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
-  <!-- To Do -->
-  <h2>To Do</h2>
-  <ul>
-    <li *ngFor="let task of getTasksByStatus('To Do')">
-      <div *ngIf="editingTaskId !== task.id">
-        <strong>[{{ task.priority }}]</strong> {{ task.title }} ({{ task.dueDate | date:'shortDate' }})
-        <button (click)="startEditing(task)">✏️ Edit</button>
+  <!-- Remaining count -->
+  <div class="remaining-count">
+    <strong>📉 Remaining Tasks:</strong> {{ getRemainingTasksCount() }}
+  </div>
+
+  <!-- TO DO Section -->
+  <mat-card class="task-section">
+    <mat-card-title>To Do</mat-card-title>
+    <ul>
+      <li *ngFor="let task of getTasksByStatus('To Do')"
+          [ngClass]="{
+            'priority-high': task.priority?.toLowerCase() === 'high',
+            'priority-medium': task.priority?.toLowerCase() === 'medium',
+            'priority-low': task.priority?.toLowerCase() === 'low'
+          }">
+        <ng-container *ngIf="editingTaskId === task.id; else showTask">
+          <!-- Edit form -->
+          <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="editedTitle" placeholder="Edit title" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <input matInput [(ngModel)]="editedDueDate" [matDatepicker]="picker" placeholder="Due Date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <button (click)="saveEdit(task)">✔ Save</button>
+          <button (click)="cancelEdit()">✖ Cancel</button>
+        </ng-container>
+
+        <ng-template #showTask>
+          <div class="task-header">
+            <strong class="priority-label">{{ task.priority }}</strong> {{ task.title }}
+          </div>
+          <small class="date">({{ task.dueDate | date:'shortDate' }})</small><br />
+          <button (click)="startEditing(task)">✏️ Edit</button>
+          <button (click)="markAsDone(task.id)">✔ Done</button>
+          <button (click)="moveToInProgress(task.id)">➡ In Progress</button>
+          <button (click)="deleteTask(task.id)">🗑 Delete</button>
+        </ng-template>
+      </li>
+    </ul>
+  </mat-card>
+
+  <!-- IN PROGRESS Section -->
+  <mat-card class="task-section">
+    <mat-card-title>In Progress</mat-card-title>
+    <ul>
+      <li *ngFor="let task of getTasksByStatus('In Progress')"
+          [ngClass]="{
+            'priority-high': task.priority?.toLowerCase() === 'high',
+            'priority-medium': task.priority?.toLowerCase() === 'medium',
+            'priority-low': task.priority?.toLowerCase() === 'low'
+          }">
+        <div class="task-header">
+          <strong class="priority-label">{{ task.priority }}</strong> {{ task.title }}
+        </div>
+        <small class="date">({{ task.dueDate | date:'shortDate' }})</small><br />
         <button (click)="markAsDone(task.id)">✔ Done</button>
         <button (click)="deleteTask(task.id)">🗑 Delete</button>
-      </div>
-      <div *ngIf="editingTaskId === task.id">
-        <input [(ngModel)]="editedTitle" />
-        <input type="date" [(ngModel)]="editedDueDate" />
-        <button (click)="saveEdit(task)">💾 Save</button>
-        <button (click)="cancelEdit()">❌ Cancel</button>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </mat-card>
 
-  <!-- In Progress -->
-  <h2>In Progress</h2>
-  <ul>
-    <li *ngFor="let task of getTasksByStatus('In Progress')">
-      <strong>[{{ task.priority }}]</strong> {{ task.title }} ({{ task.dueDate | date:'shortDate' }})
-    </li>
-  </ul>
-
-  <!-- Done -->
-  <h2>Done</h2>
-  <ul>
-    <li *ngFor="let task of getTasksByStatus('Done')">
-      <strong>[{{ task.priority }}]</strong> {{ task.title }} ({{ task.dueDate | date:'shortDate' }})
-    </li>
-  </ul>
+  <!-- DONE Section -->
+  <mat-card class="task-section">
+    <mat-card-title>Done</mat-card-title>
+    <ul>
+      <li *ngFor="let task of getTasksByStatus('Done')"
+          [ngClass]="{
+            'priority-high': task.priority?.toLowerCase() === 'high',
+            'priority-medium': task.priority?.toLowerCase() === 'medium',
+            'priority-low': task.priority?.toLowerCase() === 'low'
+          }">
+        <div class="task-header">
+          <strong class="priority-label">{{ task.priority }}</strong> {{ task.title }}
+        </div>
+        <small class="date">({{ task.dueDate | date:'shortDate' }})</small><br />
+        <button (click)="deleteTask(task.id)">🗑 Delete</button>
+      </li>
+    </ul>
+  </mat-card>
 </div>

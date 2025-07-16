@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
-import { TaskService } from '../../services/task.service';
-import { Task } from '../../models/task';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { TaskService } from '../../services/task.service';
+import { Task } from '../../models/task';
+import { taskRefreshSignal } from '../../signals/task-refresh.signal';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { taskRefreshSignal } from '../../signals/task-refresh.signal';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-task-form',
@@ -16,13 +20,16 @@ import { taskRefreshSignal } from '../../signals/task-refresh.signal';
     FormsModule,
     MatInputModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './task-form.component.html'
 })
 export class TaskFormComponent {
   title: string = '';
-  dueDate?: string;
+  dueDate?: Date | null = null;
   priority: 'Low' | 'Medium' | 'High' = 'Medium';
 
   constructor(private taskService: TaskService) {}
@@ -33,7 +40,7 @@ export class TaskFormComponent {
     const newTask: Task = {
       id: Date.now(),
       title: this.title,
-      dueDate: this.dueDate ? new Date(this.dueDate) : undefined,
+      dueDate: this.dueDate || undefined,
       priority: this.priority,
       status: 'To Do'
     };
@@ -42,7 +49,7 @@ export class TaskFormComponent {
     taskRefreshSignal.update(v => v + 1);
 
     this.title = '';
-    this.dueDate = '';
+    this.dueDate = null;
     this.priority = 'Medium';
   }
 }

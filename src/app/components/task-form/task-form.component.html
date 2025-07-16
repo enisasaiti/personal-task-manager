@@ -1,17 +1,16 @@
-<form (ngSubmit)="addTask()" class="task-form" style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
+<form (ngSubmit)="addTask()" class="task-form">
   <mat-form-field appearance="fill">
-    <mat-label>Task Title</mat-label>
-    <input matInput [(ngModel)]="title" name="title" required />
+    <input matInput [(ngModel)]="title" name="title" placeholder="Task title" required />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Due Date</mat-label>
-    <input matInput type="date" [(ngModel)]="dueDate" name="dueDate" />
+    <input matInput [(ngModel)]="dueDate" [matDatepicker]="picker" name="dueDate" placeholder="Due Date" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Priority</mat-label>
-    <mat-select [(ngModel)]="priority" name="priority">
+    <mat-select [(ngModel)]="priority" name="priority" placeholder="Priority">
       <mat-option value="Low">Low</mat-option>
       <mat-option value="Medium">Medium</mat-option>
       <mat-option value="High">High</mat-option>
