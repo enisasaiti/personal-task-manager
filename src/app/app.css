@@ -1,0 +1,14 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.left-column,
+.right-column {
+  flex: 1 1 400px;
+  max-width: 500px;
+}

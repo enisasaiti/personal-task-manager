@@ -17,17 +17,17 @@ export class TaskListComponent implements OnInit {
   editedTitle: string = '';
   editedDueDate?: string;
   searchTerm: string = '';
+  priorityFilter: 'All' | 'Low' | 'Medium' | 'High' = 'All';
 
   constructor(private taskService: TaskService) {
-    // ✅ Effect moved into constructor (valid injection context)
     effect(() => {
-      taskRefreshSignal(); // triggers re-evaluation
+      taskRefreshSignal();
       this.loadTasks();
     });
   }
 
   ngOnInit(): void {
-    this.loadTasks(); // initial load (optional since effect handles it too)
+    this.loadTasks();
   }
 
   loadTasks(): void {
@@ -38,7 +38,8 @@ export class TaskListComponent implements OnInit {
     return this.tasks
       .filter(task =>
         task.status === status &&
-        task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        task.title.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
+        (this.priorityFilter === 'All' || task.priority === this.priorityFilter)
       );
   }
 

@@ -6,7 +6,13 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, TaskFormComponent, TaskListComponent],
+  standalone: true,
+  imports: [
+    RouterOutlet,
+    FormsModule,
+    TaskFormComponent,
+    TaskListComponent
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
