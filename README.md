@@ -71,9 +71,9 @@ npm start / ng serve
 | Sprint 1   | Create task model, add/list/delete tasks      | ✅ Completed    |
 | Sprint 2   | Mark tasks as done, edit tasks                | ✅ Completed    |
 | Sprint 3   | Search, task counter, auto-refresh            | ✅ Completed    |
-| Sprint 4   | UI/UX design with Angular Material or Tailwind| ⏳ In Progress  |
-| Sprint 5   | Filter by priority, sort tasks                | 🟡 Planned      |
-| Sprint 6   | Export to file (CSV/PDF), sync or share tasks | 🟡 Planned      |
+| Sprint 4   | UI/UX design with Angular Material or Tailwind| ✅ Completed    |
+| Sprint 5   | Filter by priority, sort tasks                | ✅ Completed    |
+| Sprint 6   | Export to file (CSV/PDF), sync or share tasks | ✅ Completed    |
 
 
 ## 📎 Useful Links
