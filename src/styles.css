@@ -15,8 +15,145 @@
   --priority-low: #6fcf97;
   --card-bg: #2e2e2e;
 }
-.task-section {
-  background-color: var(--card-bg);
+
+/* Global body styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: Roboto, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Section containers */
+.task-section,
+mat-card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Priority color indicators */
+.priority-high {
+  border-left: 5px solid var(--priority-high);
+}
+
+.priority-medium {
+  border-left: 5px solid var(--priority-medium);
+}
+
+.priority-low {
+  border-left: 5px solid var(--priority-low);
+}
+
+/* Text styles */
+h1,
+mat-card-title,
+.date,
+.priority-label {
+  color: var(--text-color);
+}
+
+/* Dark theme overrides for Material form fields */
+.dark-theme .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-radius: 4px;
+}
+
+.dark-theme .mat-input-element,
+.dark-theme .mat-select-value-text {
+  color: var(--text-color) !important;
+}
+
+.dark-theme .mat-select-trigger {
+  background-color: transparent !important;
+}
+
+.dark-theme .mat-select-panel {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+.dark-theme .mat-form-field-underline {
+  background-color: var(--text-color) !important;
+}
+
+/* Optional: ensure labels in dark theme are visible */
+.dark-theme .mat-form-field label {
+  color: var(--text-color) !important;
+}
+:host-context(.dark-theme) ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-radius: 4px;
+}
+
+:host-context(.dark-theme) ::ng-deep .mat-input-element,
+:host-context(.dark-theme) ::ng-deep .mat-select-value-text {
+  color: var(--text-color) !important;
+}
+
+:host-context(.dark-theme) ::ng-deep .mat-select-panel {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: var(--card-bg) !important;
+  border-radius: 4px;
+}
+
+body.dark-theme .mat-input-element,
+body.dark-theme input.mat-input-element,
+body.dark-theme textarea.mat-input-element {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-form-field-label,
+body.dark-theme .mat-select-value,
+body.dark-theme .mat-select-value-text {
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-select-panel {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-option {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-mdc-text-field-wrapper {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-theme input.mat-mdc-input-element,
+body.dark-theme textarea.mat-mdc-input-element {
+  color: var(--text-color) !important;
+  background-color: transparent !important;
+}
+
+body.dark-theme .mat-mdc-form-field-infix,
+body.dark-theme .mat-mdc-floating-label {
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-mdc-select-trigger,
+body.dark-theme .mat-mdc-select-value {
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-mdc-select-panel {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
+
+body.dark-theme .mat-mdc-option {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
 }

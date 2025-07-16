@@ -1,39 +1,47 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
-
-// Angular Material modules
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
   standalone: true,
+  templateUrl: './app.html',
+  styleUrl: './app.css',
   imports: [
     RouterOutlet,
     FormsModule,
     TaskFormComponent,
-    TaskListComponent,
-    // Material Modules
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatButtonModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatCardModule
-  ],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+    TaskListComponent
+  ]
 })
 export class App {
   protected readonly title = signal('personal-task-manager');
+
+  toggleTheme(): void {
+    const body = document.body;
+
+    if (body.classList.contains('dark-theme')) {
+      body.classList.remove('dark-theme');
+      body.classList.add('light-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.classList.remove('light-theme');
+      body.classList.add('dark-theme');
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+
+  constructor() {
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      const saved = localStorage.getItem('theme');
+      document.body.classList.remove('light-theme', 'dark-theme');
+      if (saved === 'dark') {
+        document.body.classList.add('dark-theme');
+      } else {
+        document.body.classList.add('light-theme');
+      }
+    }
+  }
 }

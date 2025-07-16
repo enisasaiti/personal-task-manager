@@ -112,4 +112,11 @@ export class TaskListComponent implements OnInit {
     this.loadTasks();
     this.cancelEdit();
   }
+  exportTasksToCSV(): void {
+    this.taskService.exportCSV();
+  }
+
+  exportPDF(): void {
+    this.taskService.exportPDF();
+  }
 }

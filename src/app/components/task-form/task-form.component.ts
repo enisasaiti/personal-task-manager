@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskService } from '../../services/task.service';
+import { FormsModule } from '@angular/forms';
 import { Task } from '../../models/task';
+import { TaskService } from '../../services/task.service';
 import { taskRefreshSignal } from '../../signals/task-refresh.signal';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,17 +15,19 @@ import { MatNativeDateModule } from '@angular/material/core';
 @Component({
   selector: 'app-task-form',
   standalone: true,
+  templateUrl: './task-form.component.html',
+  styleUrls: ['./task-form.component.css'],
   imports: [
     CommonModule,
     FormsModule,
+    MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
-    MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule
-  ],
-  templateUrl: './task-form.component.html'
+  ], 
+  encapsulation: ViewEncapsulation.None,
 })
 export class TaskFormComponent {
   title: string = '';
@@ -46,7 +48,7 @@ export class TaskFormComponent {
     };
 
     this.taskService.addTask(newTask);
-    taskRefreshSignal.update(v => v + 1);
+    taskRefreshSignal.update((v: number) => v + 1);
 
     this.title = '';
     this.dueDate = null;

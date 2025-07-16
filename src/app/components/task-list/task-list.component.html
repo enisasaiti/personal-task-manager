@@ -22,6 +22,16 @@
     <strong>📉 Remaining Tasks:</strong> {{ getRemainingTasksCount() }}
   </div>
 
+  <!-- Export Buttons -->
+  <div class="export-button" style="margin-bottom: 1rem;">
+    <button mat-raised-button color="primary" (click)="exportTasksToCSV()">
+      ⬇ Export Tasks (CSV)
+    </button>
+    <button mat-raised-button color="accent" (click)="exportPDF()">
+      📄 Export Tasks (PDF)
+    </button>
+  </div>
+
   <!-- TO DO Section -->
   <mat-card class="task-section">
     <mat-card-title>To Do</mat-card-title>
@@ -33,7 +43,6 @@
             'priority-low': task.priority?.toLowerCase() === 'low'
           }">
         <ng-container *ngIf="editingTaskId === task.id; else showTask">
-          <!-- Edit form -->
           <mat-form-field appearance="fill">
             <input matInput [(ngModel)]="editedTitle" placeholder="Edit title" />
           </mat-form-field>

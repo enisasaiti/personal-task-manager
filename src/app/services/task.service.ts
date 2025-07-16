@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task } from '../models/task';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable'
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,6 @@ export class TaskService {
     const stored = localStorage.getItem(this.storageKey);
     const tasks = stored ? JSON.parse(stored) : [];
 
-    // ✅ MIGRATION: convert any dueDate string to actual Date object
     return tasks.map((task: Task) => ({
       ...task,
       dueDate: task.dueDate ? new Date(task.dueDate) : undefined
@@ -51,4 +52,52 @@ export class TaskService {
     );
     localStorage.setItem(this.storageKey, JSON.stringify(tasks));
   }
+
+  exportCSV(): void {
+    const tasks = this.getTasks();
+    if (!tasks.length) return;
+
+    const header = ['ID', 'Title', 'Due Date', 'Priority', 'Status'];
+    const rows = tasks.map(task => [
+      task.id,
+      `"${task.title}"`,
+      task.dueDate ? new Date(task.dueDate).toLocaleDateString() : '',
+      task.priority ?? '',
+      task.status
+    ]);
+
+    const csvContent = [header, ...rows]
+      .map(row => row.join(','))
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'tasks-export.csv';
+    link.click();
+  }
+
+  exportPDF(): void {
+    const tasks = this.getTasks();
+    if (!tasks.length) return;
+
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text('Task Export', 14, 15);
+
+    autoTable(doc, {
+      head: [['ID', 'Title', 'Due Date', 'Priority', 'Status']],
+      body: tasks.map(task => [
+        task.id,
+        task.title,
+        task.dueDate ? new Date(task.dueDate).toLocaleDateString() : '',
+        task.priority ?? '',
+        task.status
+      ]),
+      startY: 25
+    });
+
+    doc.save('tasks-export.pdf');
+  }
+
 }

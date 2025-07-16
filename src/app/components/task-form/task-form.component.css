@@ -1,0 +1,15 @@
+:host-context(.dark-theme) ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-radius: 4px;
+}
+
+:host-context(.dark-theme) ::ng-deep .mat-input-element,
+:host-context(.dark-theme) ::ng-deep .mat-select-value-text {
+  color: var(--text-color) !important;
+}
+
+:host-context(.dark-theme) ::ng-deep .mat-select-panel {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+}
