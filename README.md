@@ -102,7 +102,7 @@ This app allows users to manage their personal to-do list with key features such
 
 
 ## 📃 Agile Artifacts & Documentation
-- [📘 Confluence Documentation](https://saitienisa.atlassian.net/wiki/spaces/~7120208f7e3e8c90b74394bd1e5ab7c2b62747/pages/589826/Personal+Task+Manager+Documentation)
+- [📘 Project Documentation](./documentation/documentation/)
   
 ## 💡 Key Learnings
 - Practiced full Agile cycle: planning, sprint execution, retrospective
