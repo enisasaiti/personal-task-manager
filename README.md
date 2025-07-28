@@ -37,11 +37,11 @@ This app allows users to manage their personal to-do list with key features such
 ---
 
 ## 🧑‍💻 Getting Started
-- 📅 Requirements
-  Node.js >= 18
-  Angular CLI >= 16
+📅 Requirements:
+  - Node.js >= 18
+  - Angular CLI >= 16
 
-- 📅 Installation
+ 📅 Installation
   ```
   git clone https://github.com/enisasaiti/personal-task-manager.git
   cd personal-task-manager
@@ -54,7 +54,6 @@ This app allows users to manage their personal to-do list with key features such
   ng serve
   ```
 
----
 ## 📈 Sprint History
 
 ## 🟢 Sprint 1
@@ -89,7 +88,7 @@ This app allows users to manage their personal to-do list with key features such
 - 📄 Added CSV export functionality
 - 🌚 Introduced light/dark mode theme toggle
 
----
+
 ## 🛣️ Roadmap
 
 | Sprint     | Goals                                         | Status         |
@@ -101,11 +100,11 @@ This app allows users to manage their personal to-do list with key features such
 | Sprint 5   | Filter by priority, sort tasks                | ✅ Completed    |
 | Sprint 6   | Export to file (CSV/PDF), sync or share tasks | ✅ Completed    |
 
----
+
 ##📃 Agile Artifacts & Documentation
 - [📘 Confluence Documentation](https://saitienisa.atlassian.net/wiki/spaces/~7120208f7e3e8c90b74394bd1e5ab7c2b62747/pages/589826/Personal+Task+Manager+Documentation)
----
-  ##💡 Key Learnings
+  
+##💡 Key Learnings
 - Practiced full Agile cycle: planning, sprint execution, retrospective
 - Learned Angular standalone architecture, signals, and reactive UI patterns
 - Improved skills in modular CSS, Angular Material, and exporting data
