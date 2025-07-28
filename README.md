@@ -47,7 +47,7 @@ This app allows users to manage their personal to-do list with key features such
   cd personal-task-manager
   npm install
   ```
-- 🚀 Run Locally
+ 🚀 Run Locally
   ```
   npm start
   # or
@@ -78,7 +78,7 @@ This app allows users to manage their personal to-do list with key features such
 - 🔄 Implemented filtering by priority
 - 🎨 Styled form and layout with Material design
 
-##🟢 Sprint 5
+## 🟢 Sprint 5
 - ✅ Color-coded tasks by priority (High, Medium, Low)
 - 🌈 Grouped task sections using Material cards
 - 🌟 Refactored CSS to support future theming
@@ -101,10 +101,10 @@ This app allows users to manage their personal to-do list with key features such
 | Sprint 6   | Export to file (CSV/PDF), sync or share tasks | ✅ Completed    |
 
 
-##📃 Agile Artifacts & Documentation
+## 📃 Agile Artifacts & Documentation
 - [📘 Confluence Documentation](https://saitienisa.atlassian.net/wiki/spaces/~7120208f7e3e8c90b74394bd1e5ab7c2b62747/pages/589826/Personal+Task+Manager+Documentation)
   
-##💡 Key Learnings
+## 💡 Key Learnings
 - Practiced full Agile cycle: planning, sprint execution, retrospective
 - Learned Angular standalone architecture, signals, and reactive UI patterns
 - Improved skills in modular CSS, Angular Material, and exporting data
