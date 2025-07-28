@@ -1,9 +1,9 @@
 # 📋 Personal Task Manager
 
-This is a simple task management application built with **Angular (v20)** using the **standalone component approach**. It supports basic to-do functionality such as creating, listing, and deleting tasks — with plans to add editing, filtering, and completion tracking in future sprints.
+A simple task management app built with Angular 20 using the standalone component approach, developed through realistic Agile sprints. The project simulates professional development practices using Jira for sprint tracking and Confluence for planning and retrospectives.
 
-> 🚀 Built as part of a hands-on Agile sprint simulation using Jira and Confluence for planning and documentation.
-
+> 🚀 Overview
+This app allows users to manage their personal to-do list with key features such as creating, updating, searching, and deleting tasks. It introduces real-time UI updates, priority filtering, theming, and task exporting for a polished experience.
 ---
 
 ## 🔧 Features
@@ -14,10 +14,14 @@ This is a simple task management application built with **Angular (v20)** using 
 - 🗑 Delete tasks
 - ✔ Mark tasks as complete
 - 🔍 Search tasks by title
-- 🧮 View how many tasks are left
-- ⚡ Instantly display new tasks without reload
+- 🧶 Remaining task counter
+- ⚡ Instant UI refresh using Angular Signals
 - 💾 Tasks stored in browser **LocalStorage**
 - 📁 Clean, modular architecture using **Angular standalone components**
+- 🎨 Priority selection + filtering (Low/Medium/High)
+- 🎨 Light/Dark Theme toggle
+- 📤 Export tasks to CSV or PDF
+- 📅 Tasks sorted by due date
 
 ---
 
@@ -27,25 +31,30 @@ This is a simple task management application built with **Angular (v20)** using 
 - **Language**: TypeScript
 - **Tooling**: Angular CLI, LocalStorage API
 - **Project Management**: Jira + Confluence (Agile/Scrum approach)
+- **UI/UX**: Angular Material
+- **Storage**: LocalStorageAPI
 
 ---
 
 ## 🧑‍💻 Getting Started
+- 📅 Requirements
+  Node.js >= 18
+  Angular CLI >= 16
 
-### Clone the repo:
-```bash
-git clone https://github.com/enisasaiti/personal-task-manager.git
-cd personal-task-manager
-```
-### 📥 Install dependencies:
-```
-npm install
-```
-### 🚀 Run the app locally:
-```
-npm start / ng serve
-```
+- 📅 Installation
+  ```
+  git clone https://github.com/enisasaiti/personal-task-manager.git
+  cd personal-task-manager
+  npm install
+  ```
+- 🚀 Run Locally
+  ```
+  npm start
+  # or
+  ng serve
+  ```
 
+---
 ## 📈 Sprint History
 
 ## 🟢 Sprint 1
@@ -64,6 +73,23 @@ npm start / ng serve
 - ✅ Displayed remaining task count
 - ✅ Used Angular signals for real-time UI refresh on new task add
 
+## 🟢 Sprint 4
+- ✅ Added priority field to task form
+- ✅ Integrated Angular Material components and theming
+- 🔄 Implemented filtering by priority
+- 🎨 Styled form and layout with Material design
+
+##🟢 Sprint 5
+- ✅ Color-coded tasks by priority (High, Medium, Low)
+- 🌈 Grouped task sections using Material cards
+- 🌟 Refactored CSS to support future theming
+
+## 🟢 Sprint 6
+- ✅ Sorted tasks by due date within each status
+- 📄 Added CSV export functionality
+- 🌚 Introduced light/dark mode theme toggle
+
+---
 ## 🛣️ Roadmap
 
 | Sprint     | Goals                                         | Status         |
@@ -75,6 +101,12 @@ npm start / ng serve
 | Sprint 5   | Filter by priority, sort tasks                | ✅ Completed    |
 | Sprint 6   | Export to file (CSV/PDF), sync or share tasks | ✅ Completed    |
 
-
-## 📎 Useful Links
-- 📘 Project Documentation – Confluence: https://saitienisa.atlassian.net/wiki/spaces/~7120208f7e3e8c90b74394bd1e5ab7c2b62747/pages/589826/Personal+Task+Manager+Documentation
+---
+##📃 Agile Artifacts & Documentation
+- [📘 Confluence Documentation](https://saitienisa.atlassian.net/wiki/spaces/~7120208f7e3e8c90b74394bd1e5ab7c2b62747/pages/589826/Personal+Task+Manager+Documentation)
+---
+  ##💡 Key Learnings
+- Practiced full Agile cycle: planning, sprint execution, retrospective
+- Learned Angular standalone architecture, signals, and reactive UI patterns
+- Improved skills in modular CSS, Angular Material, and exporting data
+- Built a complete personal project with real-world documentation
